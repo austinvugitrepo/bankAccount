@@ -8,8 +8,11 @@ std::getline(std::cin, file);
 
 // object that i give file too
 BankAccount acc(file);
-
-std::cout << "The file name is: " << acc.name() << std::endl; 
+int linenum = acc.setnumofline();
+if(linenum == 1){
+return 1;
+}
+std::cout << "The file has this many lines: " << linenum << std::endl; 
 
 
 
