@@ -23,7 +23,7 @@ public:
 	int setnumofline(); // get number of lines from file
 	void readfile(); //actually read the file now that we have the count from the previous read
 	void displayinfo();
-
+        ~BankAccount();
 
 };
 

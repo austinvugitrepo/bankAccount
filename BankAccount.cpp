@@ -69,20 +69,27 @@ txtfile.close();
 }
 
 void BankAccount::displayinfo(){ //display func
+double dtotal = 0.0; //for calculating total for deposit and withdraws
+double wtotal = 0.0;
+
 std::cout << "Account number: " << accnum << std::endl;
 std::cout << "Initial balance: " << initalb << std::endl;
 std::cout << "Annual Interest Rate: " << yrir << std::endl;
 std::cout << "Monthly Service Charge: " << msc << std::endl;
 std::cout << "Number of Deposits: " << dsize << std::endl;
 std::cout << "Number of Withdraws: " << wsize << std::endl;
-std::cout << "Deposits:\n";
 for(int i = 0; i < dsize; i++){
-std::cout << i + 1 << ". " << deposit[i] << std::endl;
+dtotal += deposit[i];
 }
-std::cout << "Withdraws:\n";
+std::cout << "Total Deposit: " << dtotal << std::endl;
 for(int i = 0; i < wsize; i++){
-std::cout << i + 1 << ". " << withdraw[i] << std::endl;
+wtotal += withdraw[i];
 }
+std::cout << "Total Withdrawal: " << wtotal << std::endl;
+
+}
+
+BankAccount::~BankAccount(){
 delete [] deposit;
 delete [] withdraw;
 }
