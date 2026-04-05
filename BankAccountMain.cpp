@@ -13,10 +13,9 @@ if(linenum == 1){
 return 1;
 }
 std::cout << "The file has this many lines: " << linenum << std::endl; 
+acc.readfile();
 
-
-
-
+acc.displayinfo();
 
 return 0;
 }

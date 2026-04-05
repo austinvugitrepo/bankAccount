@@ -13,13 +13,16 @@ private:
 	double initalb; //inital balance
 	double yrir; // yearly interest rate
 	double msc; //monthly service charge
-	int size; //for number of deposits and withdraws
+	int dsize; //for number of deposits
+	int wsize; //for number of withdraws
 	int count; // for num of lines
+	double* deposit;
+	double* withdraw;
 public:
 	BankAccount(std::string); // parameter constructor protype
 	int setnumofline(); // get number of lines from file
-
-
+	void readfile(); //actually read the file now that we have the count from the previous read
+	void displayinfo();
 
 
 };

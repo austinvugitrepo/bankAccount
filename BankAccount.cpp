@@ -6,8 +6,11 @@ accnum = 0;
 initalb = 0.0;
 yrir = 0.0;
 msc = 0.0;
-size = 0;
+dsize = 0;
+wsize = 0;
 count = 0;
+deposit = nullptr;
+withdraw = nullptr;
 }
 
 int BankAccount::setnumofline(){
@@ -26,5 +29,60 @@ while(!(txtfile.eof())){  // while not reaching end of file
 std::getline(txtfile, tmp);
 count++;
 }
+txtfile.close(); //close file after done getting line count
 return count;
+}
+
+void BankAccount::readfile(){
+deposit = new double[count];
+withdraw = new double[count];
+char tmp;
+std::ifstream txtfile;
+txtfile.open(filename);
+for(int i = 0; i < count; i++){
+txtfile >> tmp;
+
+if(tmp == '#'){
+txtfile >> accnum;
+}
+else if(tmp == 'b'){
+txtfile >> initalb;
+}
+else if(tmp == 'i'){
+txtfile >> yrir;
+}
+else if(tmp == 'c'){
+txtfile >> msc;
+}
+else if(tmp == 'd'){
+txtfile >> deposit[dsize];
+dsize++;
+}
+else if(tmp == 'w'){
+txtfile >> withdraw[wsize];
+wsize++;
+}
+
+}
+
+txtfile.close();
+}
+
+void BankAccount::displayinfo(){ //display func
+std::cout << "Account number: " << accnum << std::endl;
+std::cout << "Initial balance: " << initalb << std::endl;
+std::cout << "Annual Interest Rate: " << yrir << std::endl;
+std::cout << "Monthly Service Charge: " << msc << std::endl;
+std::cout << "Number of Deposits: " << dsize << std::endl;
+std::cout << "Number of Withdraws: " << wsize << std::endl;
+std::cout << "Deposits:\n";
+for(int i = 0; i < dsize; i++){
+std::cout << i + 1 << ". " << deposit[i] << std::endl;
+}
+std::cout << "Withdraws:\n";
+for(int i = 0; i < wsize; i++){
+std::cout << i + 1 << ". " << withdraw[i] << std::endl;
+}
+delete [] deposit;
+delete [] withdraw;
 }
