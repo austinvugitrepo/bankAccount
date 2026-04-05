@@ -30,7 +30,7 @@ std::getline(txtfile, tmp);
 count++;
 }
 txtfile.close(); //close file after done getting line count
-return count;
+return 0;
 }
 
 void BankAccount::readfile(){
@@ -87,6 +87,10 @@ wtotal += withdraw[i];
 }
 std::cout << "Total Withdrawal: " << wtotal << std::endl;
 
+double monir = yrir / 12; //monthly interest rate
+double minterest = (initalb + dtotal - wtotal) * monir; //monthly interest
+double finalb = initalb + dtotal - wtotal + minterest - msc; //final balance
+std::cout << "Final balance: " << finalb << std::endl;
 }
 
 BankAccount::~BankAccount(){
